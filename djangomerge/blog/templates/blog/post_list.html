@@ -1,0 +1,49 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2">
+    {% for post in posts %}
+        <article class="post mb-2">
+           
+
+            {% comment %} <div class="row row-cols-1 row-cols-md-2"> {% endcomment %}
+                <div  class="col">
+                  <div style="height:600px" class="card mb-2">
+                    <a href="{% url 'blog:post_detail' slug=post.slug %}"> 
+                    <img style="height:400px;" src="{{ post.thumbnail_image.url }}" class="card-img-top"/></a>
+                    <div class="card-body">
+                      <a href="{% url 'blog:post_detail' slug=post.slug %}">  <h5 class="card-title">{{ post.title }}</h5> </a>
+                      
+                      <a href="{% url 'blog:category' slug=post.slug %}">  <strong>Category</strong>
+                        <p>{{post.category}}</p></a>
+                      <p class="card-text">
+                        {{ post.text|slice:"150" }}
+                      </p>
+                    </div>
+                  </div>
+
+              {% comment %} </div> {% endcomment %}
+
+
+
+ 
+                  {% comment %} <div class="card bg-gray text-black" style="width: 55rem;">
+                      <div class="card-body"> {% endcomment %}                         
+                    </article>
+                    {% endfor %}
+              </div>
+
+{% endblock %}
+
+{% comment %} <div class="card">
+    <h2><a href="{% url 'blog:post_detail' slug=post.slug %}">{{ post.title }}</a></h2>
+<div class="card bg-gray text-white">
+   <a href="{% url 'blog:post_detail' slug=post.slug %}">  <img src="{{ post.featured_image.url }}" class="card" width="300" height="100" style= "margin:10px; background: gray;"""> </a></div> 
+    
+   <p>{{ post.text|slice:"200" }}</p>
+    <strong>Category</strong>
+    <p>{{post.category}}</p>
+        </div>    
+    </div>
+  </div>
+</div> {% endcomment %}

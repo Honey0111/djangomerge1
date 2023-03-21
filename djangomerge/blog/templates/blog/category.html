@@ -1,0 +1,32 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-2 g-4">
+	{% for post in posts %}
+	<!-- <a href="{% url 'blog:post_detail' slug=post.slug %}">  <h5 class="card-title">{{ post.title }}</h5> </a>
+    <a href="{% url 'blog:category' slug=post.slug %}">  <strong>Category</strong></a> -->
+
+
+
+	<div class="col">
+		<div class="card">
+			<a href="{% url 'blog:post_detail' slug=post.slug %}">
+				<img style="height: 500px; width: 600px;" src="{{ post.thumbnail_image.url }}" class="card-img-top" /></a>
+			<div class="card-body">
+				<a href="{% url 'blog:post_detail' slug=post.slug %}">
+					<h5 class="card-title">{{ post.title }}</h5>
+				</a>
+
+				<a href="{% url 'blog:category' slug=post.slug %}"> <strong class="text-default">Category</strong>
+					<p class="text-default">{{post.category}}</p>
+				</a>
+				<p class="card-text">
+					{{ post.text|slice:"150" }}
+				</p>
+			</div>
+		</div>
+	</div>
+
+{% endfor %}
+</div>
+{% endblock %}
