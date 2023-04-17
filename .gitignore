@@ -1,0 +1,8 @@
+myvenv/
+mysite/__pycache__/
+blog/__pycache__/
+blog/migrations/
+media/
+users/__pycache__/
+users/migrations/
+db.sqlite3
